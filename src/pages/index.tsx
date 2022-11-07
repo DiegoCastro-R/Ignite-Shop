@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Head from "next/head";
 import Link from "next/link";
 import { GetStaticProps } from "next";
 import { useKeenSlider } from "keen-slider/react";

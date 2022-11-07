@@ -1,4 +1,5 @@
 import { AppProps } from "next/app";
+import Head from "next/head";
 import { globalStyle } from "../styles/global";
 import logoImg from "../assets/logo.svg";
 import { Container, Header } from "../styles/pages/app";
@@ -11,6 +12,11 @@ globalStyle();
 function App({ Component, pageProps }: AppProps) {
   return (
     <Container>
+      <>
+        <Head>
+          <title>Ignite Shop</title>
+        </Head>
+      </>
       <Header>
         <Link href="/">
           <Image src={logoImg} alt="" style={{ cursor: "pointer" }} />
