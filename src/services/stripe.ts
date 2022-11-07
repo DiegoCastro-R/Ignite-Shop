@@ -15,10 +15,30 @@ export class StripeClient {
                 name: product.name,
                 imageUrl: product.images[0],
                 url: product.url,
-                price: price.unit_amount / 100,
+                price: new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(price.unit_amount / 100),
             };
         });
         return products;
+    }
+
+    async getProductById(id: string) {
+        const product = await stripe.products.retrieve(id, {
+            expand: ["default_price"],
+        });
+
+        const price = product.default_price as Stripe.Price;
+        return {
+
+            id: product.id,
+            name: product.name,
+            imageUrl: product.images[0],
+            url: product.url,
+            price: new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(price.unit_amount / 100),
+            description: product.description,
+            defaultPriceId: price.id,
+
+        }
+
     }
 }
 

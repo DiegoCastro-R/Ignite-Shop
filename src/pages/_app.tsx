@@ -2,7 +2,7 @@ import { AppProps } from "next/app";
 import { globalStyle } from "../styles/global";
 import logoImg from "../assets/logo.svg";
 import { Container, Header } from "../styles/pages/app";
-
+import Link from "next/link";
 import Image from "next/image";
 /** end of imports */
 
@@ -12,7 +12,9 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <Container>
       <Header>
-        <Image src={logoImg} alt="" />
+        <Link href="/">
+          <Image src={logoImg} alt="" style={{ cursor: "pointer" }} />
+        </Link>
       </Header>
       <Component {...pageProps} />
     </Container>
